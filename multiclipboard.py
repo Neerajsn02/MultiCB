@@ -6,10 +6,22 @@ import json # to store the clipboard
 # data = clipboard.paste() # store whatever is copied into data
 
 
-# pass command line args using sys module
-print(sys.argv) # argv gives the cmd line args
+# Save to json file
+def saveItems(filename, data):
+    with open(filename, "w") as f:
+        json.dump(data, f)
 
-if len(sys.argv) == 2:
+
+
+# read json file
+def loadJson(filename):
+    with open(filename, "r") as f:
+        data = json.load(f)
+        return data
+
+
+
+if len(sys.argv) == 2: # Get system args
     cmd = sys.argv[1] 
 
     if cmd == "save":
